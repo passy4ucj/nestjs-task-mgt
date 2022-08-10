@@ -20,14 +20,17 @@ export class TasksController {
     // }
 
     @Get()
-    getTasks(@Query(ValidationPipe) filterDto: GetTasksFilterDto): Promise<Task[]> {
+    getTasks(
+        @Query(ValidationPipe) filterDto: GetTasksFilterDto,
+        @GetUser() user: User,
+        ): Promise<Task[]> {
         // console.log(filterDto) 
         // if(Object.keys(filterDto).length) {
         //     return this.tasksService.getTasksWithFilter(filterDto)
         // } else {
         //     return this.tasksService.getAllTasks()
         // }
-        return this.tasksService.getTasks(filterDto)
+        return this.tasksService.getTasks(filterDto, user)
     }
 
     @Get('/:id')
