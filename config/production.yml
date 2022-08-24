@@ -1,2 +1,5 @@
+server:
+  origin: serverroute
+
 db:
   synchronize: false
